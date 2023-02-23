@@ -3,10 +3,11 @@ img {
   height: 500px;
 }
 
-.carousel {
-  width: 800px;
-  height: 550px;
-  padding: 50px;
+#carousel {
+  width: 750px;
+  height: 500px;
+  padding: 25px;
+  background-color: rgba(128, 0, 128, 0.507);
 }
 
 .dot {
@@ -24,4 +25,12 @@ img {
 
 .active {
   display: block;
+}
+
+#image-slider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  flex-direction: column;
 }

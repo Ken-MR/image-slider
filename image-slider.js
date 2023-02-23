@@ -5,20 +5,25 @@ class image {
 		this.id = id;
 		this.image = image;
 		this.name = name;
-	};
-};
+	}
+}
 
 const sliderMovement = (() => {
 
-	const nextSlide = (id, image) => {
+	const nextSlide = (id, image, name) => {
 		fillDot(id);
 	};
 	
-	const prevSlide = (id, image) => {
+	const prevSlide = (id, image, name) => {
 		fillDot(id);
 	};
 	
-	const slideJump = (id, image) => {
+	const slideJump = (id, image, name) => {
+    let current = document.querySelector('.active');
+    current.classList.remove('active');
+
+    let chosen = document.getElementById(`${name}`);
+    chosen.classList.add('active');
 		fillDot(id);
 	};
 	
@@ -43,6 +48,7 @@ for (let i = 0; i < images.length; i++) {
 	// add code to create divs for each iamge. These divs will have HTMl that calls the various slideMovement functions 
 	let slide = document.createElement('div');
 	slide.setAttribute('class', 'slide');
+  slide.setAttribute('id', `${images[i].name}`);
 
   let picture = document.createElement('img');
   picture.src = images[i].image;
@@ -52,7 +58,8 @@ for (let i = 0; i < images.length; i++) {
   let dot = document.createElement('span');
   dot.setAttribute('class', 'dot');
   dotSelectors.appendChild(dot);
+  dot.addEventListener('click', function () {sliderMovement.slideJump(images[i].id, images[i].image, images[i].name)}); //
 }
 
 let display = document.querySelectorAll('.slide');
-display[0].setAttribute('class', 'active');
+display[0].classList.add('active');
