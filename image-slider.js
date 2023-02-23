@@ -10,12 +10,40 @@ class image {
 
 const sliderMovement = (() => {
 
-	const nextSlide = (id, image, name) => {
-		fillDot(id);
+	const nextSlide = () => {
+    let slides = document.getElementsByClassName('slide');
+    let index = 0;
+
+    for (let i = 0; i < slides.length; i++) {
+      if (slides[i].classList.contains('active')) {
+        index = i + 1;
+      }
+    }
+
+    if (index < slides.length) {
+      slideJump(images[index].id, images[index].image, images[index].name);
+    }
+    else {
+      slideJump(images[0].id, images[0].image, images[0].name);
+    }
 	};
 	
-	const prevSlide = (id, image, name) => {
-		fillDot(id);
+	const prevSlide = () => {
+    let slides = document.getElementsByClassName('slide');
+    let index = 0;
+
+    for (let i = 0; i < slides.length; i++) {
+      if (slides[i].classList.contains('active')) {
+        index = i - 1;
+      }
+    }
+
+    if (index >= 0) {
+      slideJump(images[index].id, images[index].image, images[index].name);
+    }
+    else {
+      slideJump(images[images.length - 1].id, images[images.length - 1].image, images[images.length - 1].name);
+    }
 	};
 	
 	const slideJump = (id, image, name) => {
@@ -36,11 +64,11 @@ const sliderMovement = (() => {
 	return { nextSlide, prevSlide, slideJump };
 })();
 
-images.push(new image (`${images.length}`, './img/island.png', 'island'));
-images.push(new image (`${images.length}`, './img/waterfall.png', 'waterfall'));
-images.push(new image (`${images.length}`, './img/frog.png', 'frog'));
-images.push(new image (`${images.length}`, './img/field.png', 'field'));
-images.push(new image (`${images.length}`, './img/skyline.png', 'skyline'));
+images.push(new image (images.length, './img/island.png', 'island'));
+images.push(new image (images.length, './img/waterfall.png', 'waterfall'));
+images.push(new image (images.length, './img/frog.png', 'frog'));
+images.push(new image (images.length, './img/field.png', 'field'));
+images.push(new image (images.length, './img/skyline.png', 'skyline'));
 
 const carousel = document.getElementById('carousel');
 const dotSelectors = document.getElementById('dot-select');
@@ -69,3 +97,11 @@ display[0].classList.add('active');
 
 let dot = document.querySelector('.dot');
 dot.classList.add('dot-active');
+
+
+
+nextButton.addEventListener('click', function () {sliderMovement.nextSlide()});
+
+prevButton.addEventListener('click', function () {sliderMovement.prevSlide()});
+
+
