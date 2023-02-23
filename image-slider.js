@@ -53,3 +53,6 @@ for (let i = 0; i < images.length; i++) {
   dot.setAttribute('class', 'dot');
   dotSelectors.appendChild(dot);
 }
+
+let display = document.querySelectorAll('.slide');
+display[0].setAttribute('class', 'active');
