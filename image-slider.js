@@ -76,7 +76,6 @@ const nextButton = document.getElementById('next-button');
 const prevButton = document.getElementById('prev-button');
 
 for (let i = 0; i < images.length; i++) {
-	// add code to create divs for each iamge. These divs will have HTMl that calls the various slideMovement functions 
 	let slide = document.createElement('div');
 	slide.setAttribute('class', 'slide');
   slide.setAttribute('id', `${images[i].name}`);
@@ -98,10 +97,8 @@ display[0].classList.add('active');
 let dot = document.querySelector('.dot');
 dot.classList.add('dot-active');
 
-
-
 nextButton.addEventListener('click', function () {sliderMovement.nextSlide()});
 
 prevButton.addEventListener('click', function () {sliderMovement.prevSlide()});
 
-
+setInterval(function () {sliderMovement.nextSlide()}, 5000);
