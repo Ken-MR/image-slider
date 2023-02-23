@@ -28,6 +28,9 @@ const sliderMovement = (() => {
 	};
 	
 	const fillDot = (id) => {
+    let dots = document.querySelectorAll('.dot');
+    dots.forEach(d => d.setAttribute('class', 'dot'));
+    dots[id].classList.add('dot-active');
 	};
 
 	return { nextSlide, prevSlide, slideJump };
@@ -63,3 +66,6 @@ for (let i = 0; i < images.length; i++) {
 
 let display = document.querySelectorAll('.slide');
 display[0].classList.add('active');
+
+let dot = document.querySelector('.dot');
+dot.classList.add('dot-active');

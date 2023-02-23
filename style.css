@@ -19,6 +19,10 @@ img {
   cursor: pointer;
 }
 
+.dot-active {
+  background-color: rgb(65, 58, 58);
+}
+
 .slide {
   display: none;
 }
