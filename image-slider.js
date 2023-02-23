@@ -28,11 +28,11 @@ const sliderMovement = (() => {
 	return { nextSlide, prevSlide, slideJump };
 })();
 
-images.push(new Image (`${images.length}`, './img/island.png', 'island'));
-images.push(new Image (`${images.length}`, './img/waterfall.png', 'waterfall'));
-images.push(new Image (`${images.length}`, './img/frog.png', 'frog'));
-images.push(new Image (`${images.length}`, './img/field.png', 'field'));
-images.push(new Image (`${images.length}`, './img/skyline.png', 'skyline'));
+images.push(new image (`${images.length}`, './img/island.png', 'island'));
+images.push(new image (`${images.length}`, './img/waterfall.png', 'waterfall'));
+images.push(new image (`${images.length}`, './img/frog.png', 'frog'));
+images.push(new image (`${images.length}`, './img/field.png', 'field'));
+images.push(new image (`${images.length}`, './img/skyline.png', 'skyline'));
 
 const carousel = document.getElementById('carousel');
 const dotSelectors = document.getElementById('dot-select');
@@ -43,7 +43,10 @@ for (let i = 0; i < images.length; i++) {
 	// add code to create divs for each iamge. These divs will have HTMl that calls the various slideMovement functions 
 	let slide = document.createElement('div');
 	slide.setAttribute('class', 'slide');
-	slide.innerHTML = "<img src=`${images[i].image}`>";
+
+  let picture = document.createElement('img');
+  picture.src = images[i].image;
+	slide.appendChild(picture);
   carousel.appendChild(slide);
 
   let dot = document.createElement('span');
